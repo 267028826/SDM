@@ -33,7 +33,7 @@ class LoginService extends Service {
     const ctx = this.ctx;
     const data = await ctx.model.User.findOne({
       where: {
-        name: username,
+        username,
         password,
       },
     });

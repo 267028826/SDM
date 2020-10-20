@@ -16,7 +16,9 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1603159472856_7405';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [
+    'authorization',
+  ];
 
   // add your user config here
   const userConfig = {
@@ -33,6 +35,22 @@ module.exports = appInfo => {
   config.jwt = {
     enable: false,
     secret: '_1603159472856_7405',
+  };
+  config.security = {
+    csrf: {
+      enable: false,
+      ignoreJson: true,
+    },
+    domainWhiteList: [ 'http://localhost:8080' ],
+  };
+  config.authorization = {
+    ua: [
+      /Baiduspider/i,
+    ],
+  };
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,PUT,POST,HEAD,DELETE,PATCH',
   };
   return {
     ...config,

@@ -54,9 +54,12 @@ class UserController extends Controller {
 
   async login() {
     const ctx = this.ctx;
-    const id = ctx.params.id;
+    const id = ctx.query.id;
     const user = await ctx.model.User.findByPk(id);
     const token = ctx.service.user.createToken({ userId: user.id });
+    console.log(JSON.stringify(user));
+    console.log(ctx.state.user);
+    console.log('a--');
     ctx.body = {
       token,
     };
